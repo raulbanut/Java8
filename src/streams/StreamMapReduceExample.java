@@ -8,6 +8,8 @@ public class StreamMapReduceExample {
     private static int numberOfNotebooks() {
         return StudentDataBase.getAllStudents()
                 .stream()
+                .filter((student -> student.getGpa() >= 3))
+                .filter((student -> student.getGender().equals("female")))
                 .map(Student::getNoteBooks)
                 .reduce(0, Integer::sum);
     }
